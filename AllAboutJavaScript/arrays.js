@@ -32,14 +32,33 @@ const newArr = myArr.join()
 // console.log(newArr);
 // console.log(typeof newArr);
 
-//Splice include the last index element also and it updates the original array by removing the slice elemnts
+//Splice include the last index element also and it updates the original array by removing the slice ////elements
 const arr = myArr.slice(1,4)
 // console.log(myArr);
-console.log(arr);
+// console.log(arr);
 const newarr = myArr.splice(1,4)
-console.log(myArr);
+// console.log(myArr);
 
-console.log(newarr);
+// console.log(newarr);
+
+const marvel_heros = ['thor','spiderman','ironman']
+const dc_heros = ['superman','flash','batman']
+// marvel_heros.push(dc_heros)
+// console.log(marvel_heros);
+
+const newMarvel = marvel_heros.concat(dc_heros)
+// console.log(newMarvel);
+
+//Spread operator....
+const all_heros = [...marvel_heros,...dc_heros]
+// console.log(all_heros);
+
+const another_array = [1,2,4,[5,3,5],8,[2,7,9,4,0,[2,5,8,6]]]
+const real_another_array = another_array.flat(Infinity)
+console.log(real_another_array);
+
+
+
 
 
 
