@@ -1,14 +1,21 @@
 let randomNumber = parseInt(Math.random() * 100 + 1);
 const submit = document.querySelector('#subt');
 const userInput = document.querySelector('#guessField');
+//To store the guessed number....
 const guessSolt = document.querySelector('.guesses');
+//The remaining attempts left....
 const remaining = document.querySelector('.lastResult');
+//It's a para that will show your guessed number is high or low....
 const lowOrHigh = document.querySelector('.lowOrHi');
+//It is used to start the game and hide the guessSlot, remaining....
 const startOver = document.querySelector('.resultParas');
 
 const p = document.createElement('p');
+//It is used to store your guesses number....
 let prevGuess = [];
+//It is used to count your numberof guesses....
 let numGuess = 1;
+//If it is true means you can play the game, basically this strategy is used while designing the game....
 let playGame = true;
 
 if (playGame) {
@@ -19,7 +26,7 @@ if (playGame) {
   });
 }
 
-//Validating the input....
+//Validating the guessed number i.e., checking number<0 or guess>100 or guess is not a string....
 function validateGuess(guess) {
   if (isNaN(guess)) {
     alert('Please, Enter a valid number');
@@ -40,7 +47,8 @@ function validateGuess(guess) {
   }
 }
 
-//check guess number is high or low, or equal to 100 or 1
+/*Since validateGuess() function only validate the number, but doesn't print anything.
+So this function will print your guesses and give the output accordingly....*/
 function checkGuess(guess) {
   if (guess === randomNumber) {
     displayMessage('You guessed correctly');
@@ -52,7 +60,7 @@ function checkGuess(guess) {
   }
 }
 
-//
+//It is used to clean the userInput, update the previousGuess array, update the remaining guess....
 function displayGuess(guess) {
   userInput.value = '';
   guessSolt.innerHTML += `${guess} `;
@@ -60,6 +68,7 @@ function displayGuess(guess) {
   remaining.innerHTML = `${11 - numGuess}`;
 }
 
+//It is used to print message that your guessed number is high or low....
 function displayMessage(message) {
   lowOrHigh.innerHTML = `<h2>${message}</h2>`;
 }
