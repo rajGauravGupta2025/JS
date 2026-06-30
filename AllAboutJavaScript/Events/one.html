@@ -1,0 +1,87 @@
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HTML Events</title>
+	</head>
+	<style>
+	#images{
+	display: flex;
+	row-gap: 12px;
+	}
+	</style>
+	<body style="background-color: #414141; color: aliceblue;">
+	<h2>Amazing image</h2>
+	<div>
+	<ul id="images">
+	<li><img width="200px" id="photoshop" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=400" alt="photoshop"></li>
+	<li><img width="200px" id="japan" src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400" alt="japan"></li>
+	<li><img width="200px" id="river" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400" alt="river"></li>
+	<li><img width="200px" id="owl" src="https://images.unsplash.com/photo-1543549049-9fbcc3cd9003?w=400" alt="owl"></li>
+	<li><img width="200px" id="prayer" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="prayer"></li>
+	<li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+	</ul>
+	</div>
+	</body>
+	<script>
+	<!-- It has less feature as compare to event listners -->
+	//document.getElementById('owl').onclick = function(){
+	// alert('Owl Clicked')
+	//}
+	
+	//Go through , screenX, screenY
+	//altkey, ctrlkey,all these events................
+	//type, timeStamp, defaultPrevented
+	//target, toElement, srcElement, currentTarget
+	//clientX, clientY shiftkey, keyCode
+	
+	//-----------------------------------------------------------------------------
+	//document.getElementById('owl').addEventListener('click',function(e){
+	// console.log('Owl Clicked')
+	// //alert('Owl clicked again!')
+	//},false)
+	
+	//Note: here in the optional parameter, we couldn't find any change in the console if we are using true or false.....
+	//-------------------------------------------------------------------------------
+	
+	//Event Propagation - It has two context
+	//1. Event Bubbling - The default value is false which occurs by event bubbling
+	//2. Event Capturing - In some scenario we need "true" which occurs by event capturing
+	
+	document.getElementById('images').addEventListener('click',function(e){
+	//console.log('Clicked inside the ul')
+	},false)
+	
+	document.getElementById('owl').addEventListener('click',function(e){
+	console.log('Owl Clicked')
+	//e.stopPropagation() -> This method stops the event bubbling
+	//alert('Owl clicked again!')
+	},false)
+	
+	//Note: Here when we are clicking the other id's images except owl then first event called and when we are clicking on the id with name 'owl' the first the owl event called then images event called and this is called event bubbling(Since bubble always go from lower to upper)
+	
+	//If we change the "false -> true" then it called event capturing with the flow from Upper to lower
+	
+	//document.getElementById('google').addEventListener('click',function(e){
+	// e.preventDefault() //Prevents the event from opening....
+	// console.log('Google clicked')
+	//},false)
+	
+	//Task - Remove the image after clicking...
+	document.querySelector('#images').addEventListener('click',function(e){
+	console.log(e)
+	console.log(e.target.tagName)
+	if(e.target.tagName === 'IMG'){
+	let removeIt = e.target.parentNode
+	//removeIt.remove()
+	removeIt.parentNode.removeChild(removeIt)
+	}
+	//we have used if statement because parent Node is 'li' and onclicking on the li tag it also removes all the li tag and we want to remove only the IMG tag
+	//let removeIt = e.target.parentNode
+	//removeIt.remove()
+	//removeIt.parentNode.removeChild(removeIt)
+	},false)
+	
+	</script>
+	</html>
