@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All About Events</title>
+</head>
+<body>
+    <h1>Chai aur Code</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const sayRaj = function(){
+        console.log("Raj");
+    }
+    //setTimeout(sayRaj,2000)
+
+    const changeText = function(){
+        document.querySelector('h1').innerHTML = "Best JS Series"
+    }
+    //setTimeout(changeText,2000)
+
+    //If we want to stop the setTimeout in between then we have clearTimeout
+    //clearTimeout need referece of the setTimeout that which one of them you want to stop...
+
+    const changeMe = setTimeout(changeText,2000)
+    //clearTimeout(changeMe)           //This is not the feasible way, try using the events
+
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(changeMe)
+        console.log('Stopped')
+    })
+
+</script>
+</html>
