@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All About Events</title>
+</head>
+<body>
+    <h1>Chai aur JavaScript<h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const sayDate = function(){
+        console.log('Raj',Date.now());
+    }
+    //setInterval(sayDate,1000)
+
+    const sayDates = function(str){
+        console.log(str,Date.now());
+    }
+    
+    //Similar to clearTimeout, we have clearInterval...
+    //clearInterval(intervalId)
+    
+    document.querySelector('#start').addEventListener('click',function(){
+        const intervalId = setInterval(function(){
+            console.log("Hello, Raj");
+        },1000)
+
+        document.querySelector('#stop').addEventListener('click',function(){
+            clearInterval(intervalId)
+            console.log('Stopped');
+        })
+    })
+
+
+</script>
+</html>
